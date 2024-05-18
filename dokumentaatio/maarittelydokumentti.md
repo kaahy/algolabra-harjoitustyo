@@ -23,5 +23,5 @@ Projektissa tärkeintä on koodi, jolla saadaan 15-peliin ratkaisuja mahdollisim
 
 ## Lähteitä
 
-- https://en.wikipedia.org/wiki/Iterative_deepening_A*
+- [https://en.wikipedia.org/wiki/Iterative_deepening_A*](https://en.wikipedia.org/wiki/Iterative_deepening_A*)
 - https://michael.kim/blog/puzzle

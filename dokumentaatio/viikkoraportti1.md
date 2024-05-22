@@ -8,7 +8,7 @@ Seurasin etänä pidettyä aloitusluentoa. Perehdyin kurssiin yleisesti. (Lisäk
 
 ## Torstai
 
-Luin valitsemastani aiheesta eli 15-pelistä ja LUA*-algoritmista. Luin myös vähän laajemmin algoritmeista hahmottaakseni paremmin, mihin LUA* sijoittuu muiden joukossa, ja katsoin videoita. Noin 2 - 3 tuntia.
+Luin valitsemastani aiheesta eli 15-pelistä ja IDA*-algoritmista. Luin myös vähän laajemmin algoritmeista hahmottaakseni paremmin, mihin IDA* sijoittuu muiden joukossa, ja katsoin videoita. Noin 2 - 3 tuntia.
 
 ## Lauantai
 

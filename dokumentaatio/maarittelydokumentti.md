@@ -6,7 +6,7 @@ Toteutan projektin Helgingin yliopiston Algoritmit ja tekoäly -harjoitustyökur
 
 **Ratkaistava ongelma:** 15-pelin optimaalinen ratkaisu. 15-pelin päämäärä on siirrellä 4x4-ruudukossa olevat laatat numerojärjestykseen, ja optimaalisessa ratkaisussa siirtoja on mahdollisimman vähän.
 
-**Ohjelman toiminta käyttäjän näkökulmasta:** Käyttäjä syöttää pelin alkutilanteen yhtenä merkkijonoja, esim. 1,2,12,14,7,3,15,11,8,9,-,5,10,6,4,13, jossa viiva tarkoittaa tyhjää ruutua. Numerot luetellaan riveittäin ylhäältä alas ja vasemmalta oikealle. Ohjelma tulostaa ratkaisun joko merkkijonona, jossa luetellaan siirrettävät laatat järjestyksessä, tai taulukkoina pelin välivaiheista. Ohjelma toimii komentorivikäyttöliittymällä.
+**Ohjelman toiminta käyttäjän näkökulmasta:** Käyttäjä syöttää pelin alkutilanteen yhtenä merkkijonoja, esim. 1,2,12,14,7,3,15,11,8,9,-,5,10,6,4,13, jossa viiva tarkoittaa tyhjää ruutua. Numerot luetellaan riveittäin ylhäältä alas ja vasemmalta oikealle. Ohjelma tulostaa ratkaisun sekä merkkijonona, jossa luetellaan siirrettävät laatat järjestyksessä, että taulukkoina pelin välivaiheista. Ohjelma toimii komentorivikäyttöliittymällä.
 
 **Ohjelmointikielet:** Python (myös vertaisarvioitavissa projekteissa).
 

@@ -14,3 +14,4 @@ Työni aihe on [15-pelin](https://fi.wikipedia.org/wiki/15-peli) ratkaiseminen.
 
 [Viikkoraportti 2](https://github.com/kaahy/algolabra-harjoitustyo/blob/main/dokumentaatio/viikkoraportti2.md)
 
+[Viikkoraportti 3](https://github.com/kaahy/algolabra-harjoitustyo/blob/main/dokumentaatio/viikkoraportti3.md)

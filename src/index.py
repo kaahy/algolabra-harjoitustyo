@@ -7,14 +7,14 @@ def main():
     print("HUOM. Tämä on vasta alustava käyttöliittymä, joka näyttää miten ohjelman on tarkoitus toimia. Ohjelma ei toimi vielä. Syötteesi ei vaikuta ohjelman toimintaan.\n")
     syote = input("Syötä aloitustilanne (esim. 1,2,3,4,5,6,7,8,9,10,11,12,-,13,14,15):\n")
     syote = '1,2,3,4,5,6,7,8,9,10,11,12,-,13,14,15' # alustavassa ei välitetä käyttäjän syötteeestä
-    print()    
+    print()
 
     aloitustilanne = syote.split(',')
 
     print("Pelin aloitustilanne: ", aloitustilanne, '\n')
 
     ######################################################################
-    
+
     ohjelma = Ratkaisuohjelma(aloitustilanne)
     ratkaisu = ohjelma.ratkaisu()
     valivaiheet = ohjelma.valivaiheet()
@@ -24,7 +24,7 @@ def main():
     print('RATKAISU\n')
 
     print('Siirtojärjestys:', ratkaisu, '\n')
-    
+
     tulosta_taulukot(valivaiheet)
 
     print("_____________________________\n")

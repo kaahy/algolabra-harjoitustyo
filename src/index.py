@@ -1,17 +1,24 @@
 from ratkaisuohjelma import Ratkaisuohjelma
 
+def tarkista_syote(syote):
+    syote_listana = syote.split(',')
+    if sorted(syote_listana) == sorted(['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '-']):
+        return True
+    return False
+
 def main():
     print("_____________________________\n")
     print("15-PELIN RATKAISUOHJELMA\n")
 
-    print("HUOM. Tämä on vasta alustava käyttöliittymä, joka näyttää miten ohjelman on tarkoitus toimia. Ohjelma ei toimi vielä. Syötteesi ei vaikuta ohjelman toimintaan.\n")
-    syote = input("Syötä aloitustilanne (esim. 1,2,3,4,5,6,7,8,9,10,11,12,-,13,14,15):\n")
-    syote = '1,2,3,4,5,6,7,8,9,10,11,12,-,13,14,15' # alustavassa ei välitetä käyttäjän syötteeestä
-    print()
+    print("HUOM. Ohjelma ratkaisee tällä hetkellä vain helpoimpia pelitilanteita.\n")
+
+    while True:
+        syote = input("Syötä aloitustilanne (esim. 1,-,2,4,5,6,3,8,9,10,7,11,13,14,15,12):\n")
+        if tarkista_syote(syote):
+            break
+        print("\nVirheellinen syöte. Yritä uudelleen.\n")
 
     aloitustilanne = syote.split(',')
-
-    print("Pelin aloitustilanne: ", aloitustilanne, '\n')
 
     ######################################################################
 
@@ -21,11 +28,14 @@ def main():
 
     ######################################################################
 
-    print('RATKAISU\n')
+    print('\nRATKAISU:\n')
 
-    print('Siirtojärjestys:', ratkaisu, '\n')
-
-    tulosta_taulukot(valivaiheet)
+    if ratkaisu is None:
+        print("Syöttämällesi pelille ei ole/löydetty ratkaisua.\n")
+    else:
+        print('Siirtojärjestys:', ratkaisu, '\n')
+        print('Välivaiheet:\n')
+        tulosta_taulukot(valivaiheet)
 
     print("_____________________________\n")
 

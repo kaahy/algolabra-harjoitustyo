@@ -137,3 +137,26 @@ class TestRatkaisuohjelma(unittest.TestCase):
         ohjelma = Ratkaisuohjelma(tilanne)
         
         self.assertEqual(False, ohjelma.onko_ratkaistavissa(tilanne))
+
+    def test_lyhyin_ratkaisun_pituus(self):
+        tilanne =  ['-', '1', '2', '3', '5', '6', '7', '4', '9', '10', '11', '8', '13', '14', '15', '12']
+        # tyhjä siirtyy vasemmasta ylänurkasta esim. ensin oikeaan ylänurkkaan (3 siirtoa) ja siitä oikeaan alanurkkaan (toiset 3 siirtoa)
+
+        ohjelma = Ratkaisuohjelma(tilanne)
+
+        self.assertEqual(6, len(ohjelma.ratkaisu()))
+
+    def test_manhattan_distance(self):
+        tilanne =  ['-', '1', '2', '3', '5', '6', '7', '4', '9', '10', '11', '8', '13', '14', '15', '12']
+
+        ohjelma = Ratkaisuohjelma(tilanne)
+
+        self.assertEqual(6, ohjelma.manhattan_distance(tilanne))
+
+    def test_manhattan_distance2(self):
+        tilanne =  ['1', '2', '3', '4', '5', '6', '12', '7', '9', '10', '11', '8', '13', '14', '-', '15']
+        #            -    -    -    -    -    -     2    1    -    -     -     1     -     -    -     1
+
+        ohjelma = Ratkaisuohjelma(tilanne)
+
+        self.assertEqual(5, ohjelma.manhattan_distance(tilanne))

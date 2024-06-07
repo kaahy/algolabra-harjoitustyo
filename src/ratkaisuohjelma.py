@@ -109,7 +109,7 @@ class Ratkaisuohjelma():
             numero = tilanne[i]
 
             if numero == '-':
-                numero = 16
+                continue
 
             rivi = i // 4
             sarake = i - (rivi) * 4
@@ -132,6 +132,9 @@ class Ratkaisuohjelma():
         return self.manhattan_distance(tilanne)
 
     def ida_syvyyshaku(self, solmu, reitti, siirtoja=0):
+        if solmu in reitti:
+            return
+
         kustannusarvio = self.laske_kustannus(solmu)
         fscore = siirtoja + kustannusarvio
 

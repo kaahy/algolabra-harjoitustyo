@@ -19,7 +19,10 @@ Testausta käsittelevän etäohjauksen seuraaminen.
 
 ## Perjantai
 
-...
+- Tein pari testiä ratkaisun pituudelle ja (väliaikaiselle) etäisyysheuristiikalle.
+- Korjasin bugin, jonka takia ohjelma oli saattanut antaa ratkaisun, jossa käydään kaksi kertaa samassa pelitilanteessa.
+
+1 tunti.
 
 ## Lauantai
 

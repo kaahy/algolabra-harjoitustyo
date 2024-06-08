@@ -1,7 +1,5 @@
 # Viikkoraportti 4
 
-Viikko kesken...
-
 ## Maanantai
 
 Testausta käsittelevän etäohjauksen seuraaminen.
@@ -26,4 +24,10 @@ Testausta käsittelevän etäohjauksen seuraaminen.
 
 ## Lauantai
 
-...
+Luin dokumentaatio-ohjeita, mm. docstringeistä. Vilkaisin vähän mallitöiden dokumentaatioita. Aloitin testi- ja toteutusdokumentteja, mutta en saanut vielä mitään valmiiksi enkä edes alustavasti julkaisukelpoiseksi.
+
+1 tunti.
+
+## Aika yhteensä
+
+9,5 tuntia.

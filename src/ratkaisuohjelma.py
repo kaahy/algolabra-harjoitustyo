@@ -38,7 +38,8 @@ class Ratkaisuohjelma():
         self.siirtojarjestys = siirrettavat_numerot
 
     def onko_ratkaisu(self, tilanne):
-        if tilanne == ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '-']:
+        #if tilanne == ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '-']:
+        if tilanne == ('1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '-'):
             return True
         return False
 
@@ -65,8 +66,10 @@ class Ratkaisuohjelma():
 
         return inversiot_lkm
 
-    def naapuritilanteet(self, tilanne):
+    def naapuritilanteet(self, tilanne_):
         # millaiset laattajärjestykset mahdollisia seuraavan siirron jälkeen
+
+        tilanne = list(tilanne_)
         vaihtoehdot = []
 
         for i in range(len(tilanne)):
@@ -78,25 +81,25 @@ class Ratkaisuohjelma():
                     tilanne2 = tilanne.copy()
                     tilanne2[i] = tilanne[i+1]
                     tilanne2[i+1] = '-'
-                    vaihtoehdot.append(tilanne2)
+                    vaihtoehdot.append(tuple(tilanne2))
                 # siirto vasemmalta
                 if i not in [0, 4, 8, 12]:
                     tilanne2 = tilanne.copy()
                     tilanne2[i] = tilanne[i-1]
                     tilanne2[i-1] = "-"
-                    vaihtoehdot.append(tilanne2)
+                    vaihtoehdot.append(tuple(tilanne2))
                 # siirto ylhäältä
                 if i not in [0, 1, 2, 3]:
                     tilanne2 = tilanne.copy()
                     tilanne2[i] = tilanne[i-4]
                     tilanne2[i-4] = '-'
-                    vaihtoehdot.append(tilanne2)
+                    vaihtoehdot.append(tuple(tilanne2))
                 # siirto alhaalta
                 if i not in [12, 13, 14, 15]:
                     tilanne2 = tilanne.copy()
                     tilanne2[i] = tilanne[i+4]
                     tilanne2[i+4] = '-'
-                    vaihtoehdot.append(tilanne2)
+                    vaihtoehdot.append(tuple(tilanne2))
                 break
 
         return vaihtoehdot

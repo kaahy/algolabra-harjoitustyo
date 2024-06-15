@@ -18,10 +18,8 @@ def main():
             break
         print("\nVirheellinen syöte. Yritä uudelleen.\n")
 
-    aloitustilanne = syote.split(',')
-
-    ######################################################################
-
+    aloitustilanne = tuple(syote.split(','))
+    
     ohjelma = Ratkaisuohjelma(aloitustilanne)
     ratkaisu = ohjelma.ratkaisu()
     valivaiheet = ohjelma.valivaiheet()

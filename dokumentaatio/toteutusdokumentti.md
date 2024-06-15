@@ -15,7 +15,7 @@ Tällä hetkellä ohjelma osaa ratkaista vain yksinkertaisimpia pelitilanteita, 
 
 Tällä hetkellä ohjelman suoritus päättyy ohjelman tulostettua vastauksensa. Jos käyttäjä haluaa syöttää uuden pelitilanteen, hän joutuu suorittamaan ohjelman uudelleen. Käyttöliittymää voisi muuttaa niin, että käyttäjä voi jatkaa pelitilanteiden syöttämistä suoraan ja sulkea ohjelman itse.
 
-Vertaisarvioinnista saatuja parannusehdotuksia: self.vieraillut kannattaisi olla listan sijaan set. Koodia saisi kommentoida enemmän. Käyttäjän manuaalisen näpyttelyn rinnalle voisi tulla arvottu syöte.
+Vertaisarvioinnista saatuja parannusehdotuksia: Koodia saisi kommentoida enemmän. Käyttäjän manuaalisen näpyttelyn rinnalle voisi tulla arvottu syöte.
 
 ## Laajat kielimallit
 

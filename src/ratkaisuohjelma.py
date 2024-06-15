@@ -38,7 +38,6 @@ class Ratkaisuohjelma():
         self.siirtojarjestys = siirrettavat_numerot
 
     def onko_ratkaisu(self, tilanne):
-        #if tilanne == ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '-']:
         if tilanne == ('1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '-'):
             return True
         return False
@@ -136,6 +135,8 @@ class Ratkaisuohjelma():
         return self.manhattan_distance(tilanne)
 
     def ida_syvyyshaku(self, solmu, reitti, siirtoja=0):
+        self.vieraillut.add(solmu)
+
         if solmu in reitti:
             return
 
@@ -164,7 +165,6 @@ class Ratkaisuohjelma():
 
         for naapuri in self.naapuritilanteet(solmu):
             if naapuri not in self.vieraillut:
-                self.vieraillut.append(naapuri)
                 self.ida_syvyyshaku(naapuri, reitti2, siirtoja+1)
 
     def ida_algoritmi(self, aloitustilanne):
@@ -174,7 +174,7 @@ class Ratkaisuohjelma():
         # iteraatioita kunnes ratkaisu löytynyt, aina alkusolmusta aloittaen
         while True:
             # iteraation aikana päivittyvät
-            self.vieraillut = []
+            self.vieraillut = set()
             self.pruned_values = []
             self.seuraavan_iteraation_treshold = 100000
 

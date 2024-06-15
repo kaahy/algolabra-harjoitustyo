@@ -10,6 +10,7 @@ class Ratkaisuohjelma():
         if not self.onko_ratkaistavissa(self.aloitustilanne):
             return None
         if self.onko_ratkaisu(self.aloitustilanne):
+            self.vaiheet = [self.aloitustilanne]
             return []
         if self.ratkaistu:
             return self.siirtojarjestys

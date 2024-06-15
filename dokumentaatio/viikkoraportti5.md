@@ -1,6 +1,6 @@
 # Viikkoraportti 5
 
-Viikko kesken...
+Tällä viikolla itse ohjelman edistyminen jäi vähäiseksi. Aikaa meni enemmän dokumentaation kirjoittamiseen ja vertaisarvioinnin tekemiseen.
 
 ## Torstai
 
@@ -10,13 +10,13 @@ Viikko kesken...
 
 4,5 tuntia.
 
-## Perjantai
-
-...
-
 ## Lauantai
 
-...
+- Tein pieniä parannuksia koodiin, mm. saamani vertaisarvioinnin perusteella.
+- Perehdyin lisää vertaisarvioitavaan työhön ja kirjoitin vertaisarvioinnin.
+
+6,5 tuntia.
 
 ## Aika yhteensä
-...
+
+11 tuntia.

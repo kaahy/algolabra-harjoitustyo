@@ -1,4 +1,5 @@
 from ratkaisuohjelma import Ratkaisuohjelma
+import time
 
 def tarkista_syote(syote):
     syote_listana = syote.split(',')
@@ -7,7 +8,7 @@ def tarkista_syote(syote):
     return False
 
 def main():
-    print("_____________________________\n")
+    print("________________________________________\n")
     print("15-PELIN RATKAISUOHJELMA\n")
 
     print("HUOM. Ohjelma ratkaisee tällä hetkellä vain helpoimpia pelitilanteita.\n")
@@ -21,21 +22,26 @@ def main():
     aloitustilanne = tuple(syote.split(','))
     
     ohjelma = Ratkaisuohjelma(aloitustilanne)
+    aloitusaika = time.time()
     ratkaisu = ohjelma.ratkaisu()
+    lopetusaika = time.time()
     valivaiheet = ohjelma.valivaiheet()
-
-    ######################################################################
 
     print('\nRATKAISU:\n')
 
     if ratkaisu is None:
-        print("Syöttämällesi pelille ei ole/löydetty ratkaisua.\n")
+        if not ohjelma.onko_ratkaistavissa(aloitustilanne):
+            print("Syöttämällesi pelille ei ole olemassa ratkaisua.\n")
+        else:
+            print("Syöttämällesi pelille ei onnistuttu löytämään ratkaisua.\n")
     else:
-        print('Siirtojärjestys:', ratkaisu, '\n')
-        print('Välivaiheet:\n')
+        print(f"Siirtojärjestys ({len(ratkaisu)} siirtoa): {', '.join(ratkaisu)}\n")
+        print("Välivaiheet:\n")
         tulosta_taulukot(valivaiheet)
 
-    print("_____________________________\n")
+        print(f"Aikaa meni {lopetusaika-aloitusaika} sekuntia.\n")
+    
+    print("________________________________________\n")
 
 def tulosta_taulukot(valivaiheet):
     for tilanne in valivaiheet:

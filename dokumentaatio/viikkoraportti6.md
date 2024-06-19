@@ -20,7 +20,9 @@ Tutustuin alustavasti kurssin toiseen vertaisarvioitavaan projektiin Githubin ka
 
 ## Keskiviikko
 
-- Vertaisarvioitavan projektin kloonaus, ohjelman kokeilu ja koodiin tutustumien.
-- Tulossa...
+- Vertaisarvioitavan projektin kloonaus, ohjelman kokeilu ja koodiin tutustuminen. Vertaisarvioinnin kirjoittaminen.
+- Viikkoraportin kirjoitusta.
+
+5,5 tuntia.
 
 (Kesken...)

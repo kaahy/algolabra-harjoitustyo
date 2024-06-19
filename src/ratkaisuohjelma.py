@@ -169,7 +169,7 @@ class Ratkaisuohjelma():
 
     def ida_algoritmi(self, aloitustilanne):
         self.iteraation_treshold = 0
-        self.laskuri = 20000 # ettei etsitä liian kauan, jos ratkaisua ei löydy
+        self.laskuri = 2000000 # ettei etsitä liian kauan, jos ratkaisua ei löydy
 
         # iteraatioita kunnes ratkaisu löytynyt, aina alkusolmusta aloittaen
         while True:

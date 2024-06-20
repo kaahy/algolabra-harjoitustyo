@@ -28,7 +28,7 @@ class Ratkaisuohjelma():
 
         siirrettavat_numerot = []
 
-        tyhjan_sijainti = self.vaiheet[0].index('-')
+        tyhjan_sijainti = vaiheet[0].index('-')
 
         for vaihe in self.vaiheet[1:]:
             tyhjaan_siirretty_numero = vaihe[tyhjan_sijainti]
@@ -38,27 +38,22 @@ class Ratkaisuohjelma():
         self.siirtojarjestys = siirrettavat_numerot
 
     def onko_ratkaisu(self, tilanne):
-        if tilanne == ('1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '-'):
-            return True
-        return False
+        return tilanne == ('1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '-')
 
     def onko_ratkaistavissa(self, tilanne):
         inversioiden_maara = self.laske_inversiot(tilanne)
         tyhjan_rivinro = tilanne.index('-') // 4
 
-        if (inversioiden_maara + 1+tyhjan_rivinro) % 2 == 0:
-            return True
-
-        return False
+        return (inversioiden_maara + 1+tyhjan_rivinro) % 2 == 0
 
     def laske_inversiot(self, tilanne):
         inversiot_lkm = 0
 
-        for ai in range(len(tilanne)-1):
-            a = tilanne[ai]
+        for a_i, a in enumerate(tilanne[:-1]):
+            a = tilanne[a_i]
             if a != '-':
-                for bi in range(ai+1, len(tilanne)):
-                    b = tilanne[bi]
+                for b_i in range(a_i+1, len(tilanne)):
+                    b = tilanne[b_i]
                     if b != '-':
                         if int(b) < int(a):
                             inversiot_lkm += 1
@@ -71,35 +66,31 @@ class Ratkaisuohjelma():
         tilanne = list(tilanne_)
         vaihtoehdot = []
 
-        for i in range(len(tilanne)):
-            laatta = tilanne[i]
+        i = tilanne_.index('-')
 
-            if laatta == '-':
-                # siirto oikealta
-                if i not in [3, 7, 11, 15]:
-                    tilanne2 = tilanne.copy()
-                    tilanne2[i] = tilanne[i+1]
-                    tilanne2[i+1] = '-'
-                    vaihtoehdot.append(tuple(tilanne2))
-                # siirto vasemmalta
-                if i not in [0, 4, 8, 12]:
-                    tilanne2 = tilanne.copy()
-                    tilanne2[i] = tilanne[i-1]
-                    tilanne2[i-1] = "-"
-                    vaihtoehdot.append(tuple(tilanne2))
-                # siirto ylhäältä
-                if i not in [0, 1, 2, 3]:
-                    tilanne2 = tilanne.copy()
-                    tilanne2[i] = tilanne[i-4]
-                    tilanne2[i-4] = '-'
-                    vaihtoehdot.append(tuple(tilanne2))
-                # siirto alhaalta
-                if i not in [12, 13, 14, 15]:
-                    tilanne2 = tilanne.copy()
-                    tilanne2[i] = tilanne[i+4]
-                    tilanne2[i+4] = '-'
-                    vaihtoehdot.append(tuple(tilanne2))
-                break
+        if i not in [3, 7, 11, 15]:
+            tilanne2 = tilanne.copy()
+            tilanne2[i] = tilanne[i+1]
+            tilanne2[i+1] = '-'
+            vaihtoehdot.append(tuple(tilanne2))
+        # siirto vasemmalta
+        if i not in [0, 4, 8, 12]:
+            tilanne2 = tilanne.copy()
+            tilanne2[i] = tilanne[i-1]
+            tilanne2[i-1] = "-"
+            vaihtoehdot.append(tuple(tilanne2))
+        # siirto ylhäältä
+        if i not in [0, 1, 2, 3]:
+            tilanne2 = tilanne.copy()
+            tilanne2[i] = tilanne[i-4]
+            tilanne2[i-4] = '-'
+            vaihtoehdot.append(tuple(tilanne2))
+        # siirto alhaalta
+        if i not in [12, 13, 14, 15]:
+            tilanne2 = tilanne.copy()
+            tilanne2[i] = tilanne[i+4]
+            tilanne2[i+4] = '-'
+            vaihtoehdot.append(tuple(tilanne2))
 
         return vaihtoehdot
 
@@ -159,7 +150,6 @@ class Ratkaisuohjelma():
 
         # jos solmun fscore ylittää tresholdin, lopetetaan solmun tutkiminen
         if fscore > self.iteraation_treshold:
-            self.pruned_values.append(fscore)
             self.seuraavan_iteraation_treshold = min(self.seuraavan_iteraation_treshold, fscore)
             return
 
@@ -175,7 +165,6 @@ class Ratkaisuohjelma():
         while True:
             # iteraation aikana päivittyvät
             self.vieraillut = set()
-            self.pruned_values = []
             self.seuraavan_iteraation_treshold = 100000
 
             self.ida_syvyyshaku(aloitustilanne, [])

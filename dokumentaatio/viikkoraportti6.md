@@ -25,4 +25,8 @@ Tutustuin alustavasti kurssin toiseen vertaisarvioitavaan projektiin Githubin ka
 
 5,5 tuntia.
 
-(Kesken...)
+## Torstai
+
+Yritin epäonnistuneesti nopeuttaa ohjelmaa. Ei aikaansaannoksia vähäistä koodin siistimistä yms. lukuun ottamatta.
+
+3,5 tuntia.

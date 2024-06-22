@@ -68,29 +68,21 @@ class Ratkaisuohjelma():
 
         if i not in [3, 7, 11, 15]:
             tilanne2 = tilanne.copy()
-            #tilanne2[i] = tilanne[i+1]
-            #tilanne2[i+1] = '-'
             tilanne2[i], tilanne2[i+1] = tilanne[i+1], '-'
             vaihtoehdot.append(tuple(tilanne2))
         # siirto vasemmalta
         if i not in [0, 4, 8, 12]:
             tilanne2 = tilanne.copy()
-            #tilanne2[i] = tilanne[i-1]
-            #tilanne2[i-1] = "-"
             tilanne2[i], tilanne2[i-1] = tilanne[i-1], '-'
             vaihtoehdot.append(tuple(tilanne2))
         # siirto ylhäältä
         if i not in [0, 1, 2, 3]:
             tilanne2 = tilanne.copy()
-            #tilanne2[i] = tilanne[i-4]
-            #tilanne2[i-4] = '-'
             tilanne2[i], tilanne2[i-4] = tilanne[i-4], '-'
             vaihtoehdot.append(tuple(tilanne2))
         # siirto alhaalta
         if i not in [12, 13, 14, 15]:
             tilanne2 = tilanne.copy()
-            #tilanne2[i] = tilanne[i+4]
-            #tilanne2[i+4] = '-'
             tilanne2[i], tilanne2[i+4] = tilanne[i+4], '-'
             vaihtoehdot.append(tuple(tilanne2))
 

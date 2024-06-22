@@ -30,3 +30,14 @@ Tutustuin alustavasti kurssin toiseen vertaisarvioitavaan projektiin Githubin ka
 Yritin epäonnistuneesti nopeuttaa ohjelmaa. Ei aikaansaannoksia vähäistä koodin siistimistä yms. lukuun ottamatta.
 
 3,5 tuntia.
+
+## Lauantai
+
+Pientä korjailua ja siistimistä. En saanut toteutettua naapurisolmujen läpikäyntijärjestyksen muutosta enkä myöskään etäisyysarvion parantamista toisen heuristiikan avulla, koska yritykseni jostain syystä vain hidastivat ohjelmaa. Ohjelma on kuitenkin jonkin verran nopeutunut alkuviikosta muiden pienten muutosten myötä.
+
+4 tuntia.
+
+## Aika yhteensä
+
+16,5 tuntia.
+

@@ -1,7 +1,5 @@
 # Viikkoraportti 6
 
-Viikko kesken...
-
 ## Maanantai
 
 Tunnin Zoom-keskustelu ohjaajan kanssa. Sain vinkkejä työn parantamiseen. Tärkeimpänä ohjeena sain korjata solmujen vierailujärjestyksen. Algoritmi käy tällä hetkellä naapurisolmut vain jossain oletusjärjestyksessä, vaikka ne pitäisi käydä etäisyysarvioiden mukaisessa järjestyksessä aloittaen siitä, mistä on arviolta vähiten siirtoja jäljellä. Myöhemmin yritin korjata tätä, mutta jostain syystä ohjelmasta tulikin sen myötä hitaampi. Koodissa on varmaan bugi, tai ehkä olen myös ymmärtänyt jotain väärin. Pitää vielä perehtyä tähän lisää ja yrittää uudestaan.

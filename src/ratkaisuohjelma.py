@@ -126,11 +126,6 @@ class Ratkaisuohjelma():
         return self.manhattan_distance(tilanne)
 
     def ida_syvyyshaku(self, solmu, reitti, siirtoja=0):
-        self.vieraillut.add(solmu)
-
-        if solmu in reitti:
-            return
-
         kustannusarvio = self.laske_kustannus(solmu)
         fscore = siirtoja + kustannusarvio
 
@@ -148,24 +143,21 @@ class Ratkaisuohjelma():
         if self.laskuri < 0:
             return
 
-        # jos solmun fscore ylittää tresholdin, lopetetaan solmun tutkiminen
         if fscore > self.iteraation_treshold:
             self.seuraavan_iteraation_treshold = min(self.seuraavan_iteraation_treshold, fscore)
             return
 
         for naapuri in self.naapuritilanteet(solmu):
-            if naapuri not in self.vieraillut:
+            if naapuri not in reitti:
                 self.ida_syvyyshaku(naapuri, reitti2, siirtoja+1)
 
     def ida_algoritmi(self, aloitustilanne):
-        self.iteraation_treshold = 0
-        self.laskuri = 2000000 # ettei etsitä liian kauan, jos ratkaisua ei löydy
+        self.iteraation_treshold = self.laske_kustannus(aloitustilanne)
+        self.laskuri = 5000000 # ettei etsitä liian kauan, jos ratkaisua ei löydy
 
         # iteraatioita kunnes ratkaisu löytynyt, aina alkusolmusta aloittaen
         while True:
-            # iteraation aikana päivittyvät
-            self.vieraillut = set()
-            self.seuraavan_iteraation_treshold = 100000
+            self.seuraavan_iteraation_treshold = 100000 # päivittyy tämän iteraation aikana
 
             self.ida_syvyyshaku(aloitustilanne, [])
 

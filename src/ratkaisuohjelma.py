@@ -50,13 +50,11 @@ class Ratkaisuohjelma():
         inversiot_lkm = 0
 
         for a_i, a in enumerate(tilanne[:-1]):
-            a = tilanne[a_i]
-            if a != '-':
-                for b_i in range(a_i+1, len(tilanne)):
-                    b = tilanne[b_i]
-                    if b != '-':
-                        if int(b) < int(a):
-                            inversiot_lkm += 1
+            if a == '-':
+                continue
+            for b in tilanne[a_i+1:]:
+                if b != '-':
+                    inversiot_lkm += int(b) < int(a)
 
         return inversiot_lkm
 
@@ -70,26 +68,30 @@ class Ratkaisuohjelma():
 
         if i not in [3, 7, 11, 15]:
             tilanne2 = tilanne.copy()
-            tilanne2[i] = tilanne[i+1]
-            tilanne2[i+1] = '-'
+            #tilanne2[i] = tilanne[i+1]
+            #tilanne2[i+1] = '-'
+            tilanne2[i], tilanne2[i+1] = tilanne[i+1], '-'
             vaihtoehdot.append(tuple(tilanne2))
         # siirto vasemmalta
         if i not in [0, 4, 8, 12]:
             tilanne2 = tilanne.copy()
-            tilanne2[i] = tilanne[i-1]
-            tilanne2[i-1] = "-"
+            #tilanne2[i] = tilanne[i-1]
+            #tilanne2[i-1] = "-"
+            tilanne2[i], tilanne2[i-1] = tilanne[i-1], '-'
             vaihtoehdot.append(tuple(tilanne2))
         # siirto ylhäältä
         if i not in [0, 1, 2, 3]:
             tilanne2 = tilanne.copy()
-            tilanne2[i] = tilanne[i-4]
-            tilanne2[i-4] = '-'
+            #tilanne2[i] = tilanne[i-4]
+            #tilanne2[i-4] = '-'
+            tilanne2[i], tilanne2[i-4] = tilanne[i-4], '-'
             vaihtoehdot.append(tuple(tilanne2))
         # siirto alhaalta
         if i not in [12, 13, 14, 15]:
             tilanne2 = tilanne.copy()
-            tilanne2[i] = tilanne[i+4]
-            tilanne2[i+4] = '-'
+            #tilanne2[i] = tilanne[i+4]
+            #tilanne2[i+4] = '-'
+            tilanne2[i], tilanne2[i+4] = tilanne[i+4], '-'
             vaihtoehdot.append(tuple(tilanne2))
 
         return vaihtoehdot

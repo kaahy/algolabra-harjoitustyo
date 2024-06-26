@@ -2,7 +2,7 @@
 
 ## Ohjelman yleisrakenne
 
-Ohjelmassa on komentorivillä toimiva käyttöliittymä, johon voi syöttää 15-pelin aloitustilanteen merkkijonona. Syötteen tulee olla luvut 1 - 15 ja väliviiva missä tahansa järjestyksessä pilkuin eroteltuina niin että kutakin näistä merkeistä on tasan yksi. Jos syöte ei ollut kelvollisessa muodossa, ohjelma ilmoittaa tästä ja antaa käyttäjän yrittää uudelleen. Jos ohjelma löytää peliin ratkaisun, se tulostaa ratkaisun sekä luettelemalla laattojen numerot siirtojärjestyksessä että tulostamalla taulukot pelin välivaiheista aloitustilanteesta lopputilanteeseen. Ohjelma ilmoittaa, jos pelille ei ole olemassa ratkaisua tai ohjelma ei onnistunut ratkaisemaan sitä.
+Ohjelmassa on komentorivillä toimiva käyttöliittymä, johon voi syöttää 15-pelin aloitustilanteen merkkijonona. Syötteen tulee olla luvut 1 - 15 ja väliviiva missä tahansa järjestyksessä pilkuin eroteltuina niin että kutakin näistä merkeistä on tasan yksi. Jos syöte ei ollut kelvollisessa muodossa, ohjelma ilmoittaa tästä ja antaa käyttäjän yrittää uudelleen. Jos ohjelma löytää peliin ratkaisun, se tulostaa ratkaisun sekä luettelemalla laattojen numerot siirtojärjestyksessä että tulostamalla taulukot pelin välivaiheista aloitustilanteesta lopputilanteeseen. Ohjelma tulostaa myös ratkaisuohjelman käyttämän ajan ja algoritmin vierailemien solmujen määrän. Ohjelma ilmoittaa, jos pelille ei ole olemassa ratkaisua tai ohjelma ei onnistunut ratkaisemaan sitä.
 
 Ohjelman koodi on kahdessa tiedostossa src-hakemistossa:
 
@@ -11,11 +11,11 @@ Ohjelman koodi on kahdessa tiedostossa src-hakemistossa:
 
 ## Puutteita ja parannusehdotuksia
 
-Tällä hetkellä ohjelma osaa ratkaista vain yksinkertaisimpia pelitilanteita, joihin ei tarvita kovin paljon siirtoja. Ratkaisun tehostaminen vaatii ainakin paremman heuristiikan käyttämistä.
+Tällä hetkellä ohjelma on monimutkaisimpien pelien ratkomisessa hyvin hidas. Ohjelmaa voisi nopeuttaa ainakin parantamalla heuristista etäisyysarviota, joka nyt arvioi tarvittavien siirtojen määrää liikaa alakanttiin. Hyvä heuristiikka aliarvioisi mahdollisimman vähän, mutta (kun kelpuutetaan vain lyhyin ratkaisu) ei koskaan yliarvioisi.
 
 Tällä hetkellä ohjelman suoritus päättyy ohjelman tulostettua vastauksensa. Jos käyttäjä haluaa syöttää uuden pelitilanteen, hän joutuu suorittamaan ohjelman uudelleen. Käyttöliittymää voisi muuttaa niin, että käyttäjä voi jatkaa pelitilanteiden syöttämistä suoraan ja sulkea ohjelman itse.
 
-Vertaisarvioinnista saatuja parannusehdotuksia: Koodia saisi kommentoida enemmän. Käyttäjän manuaalisen näpyttelyn rinnalle voisi tulla arvottu syöte.
+Vertaisarvioinneista saatuja parannusehdotuksia: Koodia saisi kommentoida enemmän. Laskettuja asioita, kuten etäisyyksiä ja siirtymiä, voisi tallettaa jonnekin valmiiksi. Käyttäjän manuaalisen näpyttelyn rinnalle voisi tulla arvottu syöte. Virheellisestä syötteestä tuleva ilmoitus voisi olla tarkempi.
 
 ## Laajat kielimallit
 
@@ -24,6 +24,6 @@ Ohjelman tekemisessä ei ole käytetty ChatGPT:tä eikä muita laajoja kielimall
 ## Lähteitä
 
 - https://michael.kim/blog/puzzle
-- https://www.geeksforgeeks.org/iterative-deepening-a-algorithm-ida-artificial-intelligence/
+- https://www.geeksforgeeks.org/iterative-deepening-a-algorithm-ida-artificial-intelligence/ (Tämä oli merkittävin lähde IDA*-algoritmin ymmärtämisessä ja koodauksessa.)
 - [https://en.wikipedia.org/wiki/Iterative_deepening_A*](https://en.wikipedia.org/wiki/Iterative_deepening_A*)
 - https://fi.wikipedia.org/wiki/15-peli

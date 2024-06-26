@@ -60,31 +60,35 @@ class Ratkaisuohjelma():
 
     def naapuritilanteet(self, tilanne_):
         # millaiset laattajärjestykset mahdollisia seuraavan siirron jälkeen
+        # palauttaa listan tupleja (etaisyysarvio, naapuri) etäisyysarvion mukaan järjestettynä
 
         tilanne = list(tilanne_)
         vaihtoehdot = []
 
         i = tilanne_.index('-')
 
+        # siirto oikealta
         if i not in [3, 7, 11, 15]:
             tilanne2 = tilanne.copy()
             tilanne2[i], tilanne2[i+1] = tilanne[i+1], '-'
-            vaihtoehdot.append(tuple(tilanne2))
+            vaihtoehdot.append((self.laske_kustannus(tilanne2), tuple(tilanne2)))
         # siirto vasemmalta
         if i not in [0, 4, 8, 12]:
             tilanne2 = tilanne.copy()
             tilanne2[i], tilanne2[i-1] = tilanne[i-1], '-'
-            vaihtoehdot.append(tuple(tilanne2))
+            vaihtoehdot.append((self.laske_kustannus(tilanne2), tuple(tilanne2)))
         # siirto ylhäältä
         if i not in [0, 1, 2, 3]:
             tilanne2 = tilanne.copy()
             tilanne2[i], tilanne2[i-4] = tilanne[i-4], '-'
-            vaihtoehdot.append(tuple(tilanne2))
+            vaihtoehdot.append((self.laske_kustannus(tilanne2), tuple(tilanne2)))
         # siirto alhaalta
         if i not in [12, 13, 14, 15]:
             tilanne2 = tilanne.copy()
             tilanne2[i], tilanne2[i+4] = tilanne[i+4], '-'
-            vaihtoehdot.append(tuple(tilanne2))
+            vaihtoehdot.append((self.laske_kustannus(tilanne2), tuple(tilanne2)))
+
+        vaihtoehdot.sort()
 
         return vaihtoehdot
 
@@ -119,8 +123,7 @@ class Ratkaisuohjelma():
 
         return self.manhattan_distance(tilanne)
 
-    def ida_syvyyshaku(self, solmu, reitti, siirtoja=0):
-        kustannusarvio = self.laske_kustannus(solmu)
+    def ida_syvyyshaku(self, solmu, reitti, kustannusarvio, siirtoja=0):
         fscore = siirtoja + kustannusarvio
 
         reitti2 = reitti.copy()
@@ -142,18 +145,19 @@ class Ratkaisuohjelma():
             return
 
         for naapuri in self.naapuritilanteet(solmu):
-            if naapuri not in reitti:
-                self.ida_syvyyshaku(naapuri, reitti2, siirtoja+1)
+            if naapuri[1] not in reitti:
+                self.ida_syvyyshaku(naapuri[1], reitti2, naapuri[0], siirtoja+1)
 
     def ida_algoritmi(self, aloitustilanne):
-        self.iteraation_treshold = self.laske_kustannus(aloitustilanne)
-        self.laskuri = 5000000 # ettei etsitä liian kauan, jos ratkaisua ei löydy
+        aloitustilanteen_etaisyysarvio = self.laske_kustannus(aloitustilanne)
+        self.iteraation_treshold = aloitustilanteen_etaisyysarvio
+        self.laskuri = 50000000 # ettei etsitä liian kauan, jos ratkaisua ei löydy
 
         # iteraatioita kunnes ratkaisu löytynyt, aina alkusolmusta aloittaen
         while True:
             self.seuraavan_iteraation_treshold = 100000 # päivittyy tämän iteraation aikana
 
-            self.ida_syvyyshaku(aloitustilanne, [])
+            self.ida_syvyyshaku(aloitustilanne, [], aloitustilanteen_etaisyysarvio)
 
             if self.ratkaistu:
                 self.paivita_siirtojarjestys(self.vaiheet)

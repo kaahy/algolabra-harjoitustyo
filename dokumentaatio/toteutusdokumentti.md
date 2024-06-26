@@ -15,7 +15,7 @@ Tällä hetkellä ohjelma on monimutkaisimpien pelien ratkomisessa hyvin hidas. 
 
 Tällä hetkellä ohjelman suoritus päättyy ohjelman tulostettua vastauksensa. Jos käyttäjä haluaa syöttää uuden pelitilanteen, hän joutuu suorittamaan ohjelman uudelleen. Käyttöliittymää voisi muuttaa niin, että käyttäjä voi jatkaa pelitilanteiden syöttämistä suoraan ja sulkea ohjelman itse.
 
-Vertaisarvioinneista saatuja parannusehdotuksia: Koodia saisi kommentoida enemmän. Laskettuja asioita, kuten etäisyyksiä ja siirtymiä, voisi tallettaa jonnekin valmiiksi. Käyttäjän manuaalisen näpyttelyn rinnalle voisi tulla arvottu syöte. Virheellisestä syötteestä tuleva ilmoitus voisi olla tarkempi.
+Vertaisarvioinneista saatuja parannusehdotuksia: Laskettuja asioita, kuten etäisyyksiä ja siirtymiä, voisi tallettaa jonnekin valmiiksi. Käyttäjän manuaalisen näpyttelyn rinnalle voisi tulla arvottu syöte. Virheellisestä syötteestä tuleva ilmoitus voisi olla tarkempi.
 
 ## Laajat kielimallit
 

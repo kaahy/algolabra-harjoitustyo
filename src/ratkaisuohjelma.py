@@ -6,6 +6,8 @@ class Ratkaisuohjelma():
         self.siirtojarjestys = None
         self.ratkaistu = False
 
+        self.vierailulaskuri = 0
+
     def ratkaisu(self):
         if not self.onko_ratkaistavissa(self.aloitustilanne):
             return None
@@ -124,6 +126,8 @@ class Ratkaisuohjelma():
         return self.manhattan_distance(tilanne)
 
     def ida_syvyyshaku(self, solmu, reitti, kustannusarvio, siirtoja=0):
+        self.vierailulaskuri += 1
+
         fscore = siirtoja + kustannusarvio
 
         reitti2 = reitti.copy()

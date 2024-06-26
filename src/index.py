@@ -37,7 +37,8 @@ def main():
         print(f"Siirtojärjestys ({len(ratkaisu)} siirtoa): {', '.join(ratkaisu)}\n")
         print("Välivaiheet:\n")
         tulosta_taulukot(valivaiheet)
-        print(f"Aikaa meni {lopetusaika-aloitusaika} sekuntia.\n")
+        print(f"Aikaa meni {lopetusaika-aloitusaika} sekuntia.")
+        print(f"Algoritmi vieraili {ohjelma.vierailulaskuri} solmussa.\n")
 
     print("________________________________________\n")
 

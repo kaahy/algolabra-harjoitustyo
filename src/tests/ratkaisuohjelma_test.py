@@ -114,29 +114,41 @@ class TestRatkaisuohjelma(unittest.TestCase):
 
         self.assertEqual(inversioita, ohjelma.laske_inversiot(tilanne))
 
-    def test_kertoo_että_ratkaistavissa1(self):
+    def test_kertoo_että_ratkaistavissa_1(self):
         tilanne =  ('1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '-')
         ohjelma = Ratkaisuohjelma(tilanne)
 
         self.assertEqual(True, ohjelma.onko_ratkaistavissa(tilanne))
 
-    def test_kertoo_että_ratkaistavissa2(self):
+    def test_kertoo_että_ratkaistavissa_2(self):
         tilanne =  ('3', '15', '1', '-', '12', '11', '6', '9', '4', '14', '7', '13', '10', '2', '8', '5') # oikean nettipelin yksi aloitustilanne
         ohjelma = Ratkaisuohjelma(tilanne)
 
         self.assertEqual(True, ohjelma.onko_ratkaistavissa(tilanne))
 
-    def test_kertoo_että_ei_ratkaistavissa1(self):
+    def test_kertoo_että_ei_ratkaistavissa_1(self):
         tilanne =  ('-', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15')
         ohjelma = Ratkaisuohjelma(tilanne)
 
         self.assertEqual(False, ohjelma.onko_ratkaistavissa(tilanne))
 
-    def test_kertoo_että_ei_ratkaistavissa2(self):
+    def test_kertoo_että_ei_ratkaistavissa_2(self):
         tilanne =  ('13', '9', '5', '1', '14', '10', '6', '2', '15', '11', '7', '3', '-', '12', '8', '4') # Wikipediasta 15-peli-artikkelista
         ohjelma = Ratkaisuohjelma(tilanne)
 
         self.assertEqual(False, ohjelma.onko_ratkaistavissa(tilanne))
+
+    def test_ratkaisu_on_None_jos_ei_ratkaistavissa(self):
+        aloitustilanne =  ('13', '9', '5', '1', '14', '10', '6', '2', '15', '11', '7', '3', '-', '12', '8', '4')
+        ohjelma = Ratkaisuohjelma(aloitustilanne)
+
+        self.assertEqual(None, ohjelma.ratkaisu())
+
+    def test_ratkaisu_on_tyhja_lista_jos_aloitustilanne_on_ratkaisu(self):
+        aloitustilanne =  ('1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '-')
+        ohjelma = Ratkaisuohjelma(aloitustilanne)
+
+        self.assertEqual([], ohjelma.ratkaisu())
 
     def test_lyhyin_ratkaisun_pituus(self):
         tilanne =  ('-', '1', '2', '3', '5', '6', '7', '4', '9', '10', '11', '8', '13', '14', '15', '12')
@@ -146,17 +158,45 @@ class TestRatkaisuohjelma(unittest.TestCase):
 
         self.assertEqual(6, len(ohjelma.ratkaisu()))
 
-    def test_manhattan_distance(self):
+    def test_manhattan_distance_1(self):
         tilanne =  ('-', '1', '2', '3', '5', '6', '7', '4', '9', '10', '11', '8', '13', '14', '15', '12')
-
         ohjelma = Ratkaisuohjelma(tilanne)
 
         self.assertEqual(6, ohjelma.manhattan_distance(tilanne))
 
-    def test_manhattan_distance2(self):
+    def test_manhattan_distance_2(self):
         tilanne =  ('1', '2', '3', '4', '5', '6', '12', '7', '9', '10', '11', '8', '13', '14', '-', '15')
         #            -    -    -    -    -    -     2    1    -    -     -     1     -     -    -     1
 
         ohjelma = Ratkaisuohjelma(tilanne)
 
         self.assertEqual(5, ohjelma.manhattan_distance(tilanne))
+
+    def test_oikeat_valivaiheet_1(self):
+        aloitustilanne = ('-', '2', '3', '4', '1', '6', '7', '8', '5', '9', '10', '12', '13', '14', '11', '15')
+        ohjelma = Ratkaisuohjelma(aloitustilanne)
+        ohjelma.ratkaisu()
+
+        oikeat_valivaiheet = [('-', '2', '3', '4', '1', '6', '7', '8', '5', '9', '10', '12', '13', '14', '11', '15'),
+                              ('1', '2', '3', '4', '-', '6', '7', '8', '5', '9', '10', '12', '13', '14', '11', '15'),
+                              ('1', '2', '3', '4', '5', '6', '7', '8', '-', '9', '10', '12', '13', '14', '11', '15'),
+                              ('1', '2', '3', '4', '5', '6', '7', '8', '9', '-', '10', '12', '13', '14', '11', '15'),
+                              ('1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '-', '12', '13', '14', '11', '15'),
+                              ('1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '-', '15'),
+                              ('1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '-')]
+
+        self.assertEqual(oikeat_valivaiheet, ohjelma.valivaiheet())
+
+    def test_oikeat_valivaiheet_2(self):
+        aloitustilanne = ('1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '15', '-', '13', '14', '12', '11')
+        ohjelma = Ratkaisuohjelma(aloitustilanne)
+        ohjelma.ratkaisu()
+
+        oikeat_valivaiheet = [('1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '15', '-', '13', '14', '12', '11'),
+                              ('1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '15', '11', '13', '14', '12', '-'),
+                              ('1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '15', '11', '13', '14', '-', '12'),
+                              ('1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '-', '11', '13', '14', '15', '12'),
+                              ('1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '-', '13', '14', '15', '12'),
+                              ('1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '-')]
+
+        self.assertEqual(oikeat_valivaiheet, ohjelma.valivaiheet())

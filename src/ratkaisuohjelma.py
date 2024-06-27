@@ -12,6 +12,9 @@ class Ratkaisuohjelma():
         self.ratkaistu = False
 
         self.vierailulaskuri = 0
+        
+        self.naapurimuisti = {}
+        self.md_muisti = {}
 
     def ratkaisu(self):
         """Palauttaa siirtojärjestyksen listana numeroita, jos ratkaisu löytyy, muutoin None."""
@@ -73,6 +76,9 @@ class Ratkaisuohjelma():
         """Selvittää millaiset laattajärjestykset ovat mahdollisia seuraavan siirron jälkeen.
         Palauttaa listan tupleja (etaisyysarvio, naapuri) etäisyysarvion mukaan järjestettynä.
         """
+        if tilanne_ in self.naapurimuisti:
+            return self.naapurimuisti[tilanne_]
+
         tilanne = list(tilanne_)
         vaihtoehdot = []
 
@@ -101,10 +107,15 @@ class Ratkaisuohjelma():
 
         vaihtoehdot.sort()
 
+        self.naapurimuisti[tilanne_] = vaihtoehdot
+
         return vaihtoehdot
 
     def manhattan_distance(self, tilanne):
         """Palauttaa summan (int) laattojen etäisyyksistä oikeilta paikoiltaan."""
+        if tilanne in self.md_muisti:
+            return self.md_muisti[tilanne]
+
         etaisyyksien_summa = 0
 
         for i in range(16):
@@ -125,11 +136,13 @@ class Ratkaisuohjelma():
 
             etaisyyksien_summa += rivietaisyys + sarakeetaisyys
 
+        self.md_muisti[tilanne] = etaisyyksien_summa
+
         return etaisyyksien_summa
 
     def arvio_tulevista_siirroista(self, tilanne):
         """Heuristinen arvio (int) sille, mikä tulevien siirtojen pienin määrä enintään olisi."""
-        return self.manhattan_distance(tilanne)
+        return self.manhattan_distance(tuple(tilanne))
 
     def ida_syvyyshaku(self, tilanne, reitti, arvio_tulevista_siirroista, siirtoja=0):
         """Solmuissa vierailua. Yksi pelitilanne vastaa yhtä solmua."""

@@ -10,7 +10,6 @@ def tarkista_syote(syote):
 def main():
     print("________________________________________\n")
     print("15-PELIN RATKAISUOHJELMA\n")
-    print("HUOM. Ohjelma ratkaisee tällä hetkellä vain helpoimpia pelitilanteita.\n")
 
     while True:
         syote = input("Syötä aloitustilanne (esim. 1,-,2,4,5,6,3,8,9,10,7,11,13,14,15,12):\n")

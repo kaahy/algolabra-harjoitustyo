@@ -5,24 +5,6 @@ class TestRatkaisuohjelma(unittest.TestCase):
     def setUp(self):
         pass
 
-    def test_oikea_ratkaisu_1(self):
-        aloitustilanne =  ('1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '-', '13', '14', '15')
-        ohjelma = Ratkaisuohjelma(aloitustilanne)
-
-        oikea_ratkaisu = ['13', '14', '15']
-        saatu_ratkaisu = ohjelma.ratkaisu()
-
-        self.assertEqual(oikea_ratkaisu, saatu_ratkaisu)
-
-    def test_oikea_ratkaisu_2(self):
-        aloitustilanne =  ('1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '-', '14', '15')
-        ohjelma = Ratkaisuohjelma(aloitustilanne)
-
-        oikea_ratkaisu = ['14', '15']
-        saatu_ratkaisu = ohjelma.ratkaisu()
-
-        self.assertEqual(oikea_ratkaisu, saatu_ratkaisu)
-
     def test_oikeat_siirtymavaihtoehdot_kun_tyhja_oikeassa_alanurkassa(self):
         tilanne =  ('1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '-')
         ohjelma = Ratkaisuohjelma(tilanne)
@@ -200,3 +182,21 @@ class TestRatkaisuohjelma(unittest.TestCase):
                               ('1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '-')]
 
         self.assertEqual(oikeat_valivaiheet, ohjelma.valivaiheet())
+
+    def test_oikea_ratkaisu_1(self):
+        aloitustilanne =  ('-', '2', '3', '4', '1', '6', '7', '8', '5', '9', '10', '12', '13', '14', '11', '15')
+        ohjelma = Ratkaisuohjelma(aloitustilanne)
+
+        oikea_ratkaisu = ['1', '5', '9', '10', '11', '15']
+        saatu_ratkaisu = ohjelma.ratkaisu()
+
+        self.assertEqual(oikea_ratkaisu, saatu_ratkaisu)
+
+    def test_oikea_ratkaisu_2(self):
+        aloitustilanne =  ('1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '15', '-', '13', '14', '12', '11')
+        ohjelma = Ratkaisuohjelma(aloitustilanne)
+
+        oikea_ratkaisu = ['11', '12', '15', '11', '12']
+        saatu_ratkaisu = ohjelma.ratkaisu()
+
+        self.assertEqual(oikea_ratkaisu, saatu_ratkaisu)

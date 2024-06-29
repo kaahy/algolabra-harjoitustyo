@@ -7,7 +7,7 @@ Ohjelmassa on komentorivillä toimiva käyttöliittymä, johon voi syöttää 15
 Ohjelman koodi on kahdessa tiedostossa src-hakemistossa:
 
 - **index.py** sisältää yksinkertaisen käyttöliittymän koodin, mukaan lukien syötteen tarkistuksen.
-- **ratkaisuohjelma.py** sisältää luokan Ratkaisuohjelma, joka vastaa sen selvittämisestä, onko pelille olemassa ratkaisua, ratkaisun etsimisestä ja ratkaisun palauttamisesta sekä siirtojärjestyksenä että välivaiheina. Pelin ratkaistavuus selvitetään laskemalla inversioiden määrän ja tyhjän ruudun rivinumeron pariteetti. (Inversioiden määrä = monessako lukujonon lukuparissa ensimmäinen luku on jälkimmäistä suurempi.) Ratkaisua etsitään IDA*-algoritmilla, jossa hyödynnetään heuristisia etäisyysarvioita.
+- **ratkaisuohjelma.py** sisältää luokan Ratkaisuohjelma, joka vastaa sen selvittämisestä, onko pelille olemassa ratkaisua, ratkaisun etsimisestä ja ratkaisun palauttamisesta sekä siirtojärjestyksenä että välivaiheina. Pelin ratkaistavuus selvitetään laskemalla inversioiden määrän ja tyhjän ruudun rivinumeron summan pariteetti. (Inversioiden määrä = monessako lukujonon lukuparissa ensimmäinen luku on jälkimmäistä suurempi.) Ratkaisua etsitään IDA*-algoritmilla, jossa hyödynnetään heuristisia etäisyysarvioita. Tässä ohjelmassa heuristiikkana käytetään ns. manhattan distancea.
 
 ## Puutteita ja parannusehdotuksia
 

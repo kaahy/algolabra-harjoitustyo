@@ -12,7 +12,8 @@ class Ratkaisuohjelma():
         self.ratkaistu = False
 
         self.vierailulaskuri = 0
-        
+        self.vieraillut = set()
+
         self.naapurimuisti = {}
         self.md_muisti = {}
 
@@ -36,9 +37,6 @@ class Ratkaisuohjelma():
 
     def paivita_siirtojarjestys(self, vaiheet):
         """Asettaa self.siirtojarjestys-muuttujaan välivaiheista lasketun siirtojärjestyksen listana numeroita."""
-        if not self.ratkaistu:
-            return
-
         siirrettavat_numerot = []
 
         tyhjan_sijainti = vaiheet[0].index('-')
@@ -125,11 +123,11 @@ class Ratkaisuohjelma():
                 continue
 
             rivi = i // 4
-            sarake = i - (rivi) * 4
+            sarake = i - rivi * 4
 
             oikea_kohta = int(numero) - 1
-            oikea_rivi = (oikea_kohta) // 4
-            oikea_sarake = oikea_kohta - (oikea_rivi) * 4
+            oikea_rivi = oikea_kohta // 4
+            oikea_sarake = oikea_kohta - oikea_rivi * 4
 
             rivietaisyys = abs(rivi - oikea_rivi)
             sarakeetaisyys = abs(sarake - oikea_sarake)
@@ -148,13 +146,17 @@ class Ratkaisuohjelma():
         """Solmuissa vierailua. Yksi pelitilanne vastaa yhtä solmua."""
         self.vierailulaskuri += 1
 
-        reitti2 = reitti.copy()
-        reitti2.append(tilanne)
-
         if self.ratkaistu:
             return
+
+        self.vieraillut.add(tilanne)
+
+        reitti_nyt = reitti.copy()
+        reitti_nyt.append(tilanne)
+
         if self.onko_ratkaisu(tilanne):
-            self.vaiheet = reitti2
+            self.vaiheet = reitti_nyt
+            self.paivita_siirtojarjestys(self.vaiheet)
             self.ratkaistu = True
             return
 
@@ -171,13 +173,13 @@ class Ratkaisuohjelma():
 
         for naapuri in self.naapuritilanteet(tilanne):
             if naapuri[1] not in reitti:
-                self.ida_syvyyshaku(naapuri[1], reitti2, naapuri[0], siirtoja+1)
+                self.ida_syvyyshaku(naapuri[1], reitti_nyt, naapuri[0], siirtoja+1)
 
     def ida_algoritmi(self, aloitustilanne):
         """Etsii ratkaisua ja sen löytyessä päivittää konstruktorin ratkaisumuuttujat."""
         aloitustilanteen_etaisyysarvio = self.arvio_tulevista_siirroista(aloitustilanne)
         self.iteraation_treshold = aloitustilanteen_etaisyysarvio # fscoren ylärajoitus, kasvaa iteraatioittain
-        self.laskuri = 50000000 # ettei etsitä liian kauan, jos ratkaisua ei löydy
+        self.laskuri = 100000000 # ettei etsitä liian kauan, jos ratkaisua ei löydy
 
         # iteraatioita kunnes ratkaisu löytynyt, aina alkusolmusta aloittaen
         # joka iteraatiolla edetään solmuissa (pelitilanteissa) syvemmälle kuin edellisellä
@@ -187,7 +189,6 @@ class Ratkaisuohjelma():
             self.ida_syvyyshaku(aloitustilanne, [], aloitustilanteen_etaisyysarvio)
 
             if self.ratkaistu:
-                self.paivita_siirtojarjestys(self.vaiheet)
                 return
 
             self.iteraation_treshold = self.seuraavan_iteraation_treshold

@@ -1,6 +1,6 @@
 # Määrittelydokumentti
 
-Toteutan projektin Helgingin yliopiston Algoritmit ja tekoäly -harjoitustyökurssilla, jonka suoritan osana tietojenkäsittelytieteen kandidaatin tutkintoa.
+Toteutan projektin Helgingin yliopiston Algoritmit ja tekoäly -harjoitustyökurssilla, jonka suoritan osana tietojenkäsittelytieteen kandiohjelmaa.
 
 ## Projektin perustiedot
 
@@ -18,8 +18,7 @@ Projektissa tärkeintä on koodi, jolla saadaan 15-peliin ratkaisuja mahdollisim
 
 **15-peli verkkona:** 15-pelin tapauksessa verkon solmut vastaavat pelin eri tilanteita. Esimerkiksi lähtösolmu vastaa pelin aloitustilannetta. Sen naapurisolmut vastaavat tilanteita, jossa peli voi seuraavan siirron jälkeen olla. Maalisolmu vastaa pelin lopetustilannetta eli ratkaisua.
 
-**IDA\*-algoritmin toimintaperiaate:** IDA\* käy verkon solmuja läpi syvyyshakuna valiten solmun naapurisolmuista sen, jonka valitessaan kokonaiskustannus  (15-pelin tapauksessa siirtojen määrä) olisi pienin. Jokaisen vaihtoehdon kokonaiskustannus saadaan laskemalla yhteen todellinen kustannus vaihtoehtosolmuun asti ja heuristiikkojen avulla arvioitu sen jälkeinen kustannus.
-
+**IDA\*-algoritmin toimintaperiaate:** IDA\* käy verkon solmuja läpi iteraatioittain syvemmälle etenevinä syvyyshakuina valiten solmun naapurisolmuista aina ensin sen, jonka valitessaan arvioitu kokonaiskustannus  (15-pelin tapauksessa siirtojen määrä) olisi pienin. Jokaisen vaihtoehdon arvioitu kokonaiskustannus saadaan laskemalla yhteen todellinen kustannus vaihtoehtosolmuun asti ja heuristiikkojen avulla arvioitu sen jälkeinen kustannus.
 
 ## Lähteitä
 

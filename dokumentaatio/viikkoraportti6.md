@@ -31,7 +31,7 @@ Yritin epäonnistuneesti nopeuttaa ohjelmaa. Ei aikaansaannoksia vähäistä koo
 
 ## Lauantai
 
-Pientä korjailua ja siistimistä. En saanut toteutettua naapurisolmujen läpikäyntijärjestyksen muutosta enkä myöskään etäisyysarvion parantamista toisen heuristiikan avulla, koska yritykseni jostain syystä vain hidastivat ohjelmaa. Ohjelma on kuitenkin jonkin verran nopeutunut alkuviikosta muiden pienten muutosten myötä.
+Pientä korjailua ja siistimistä. En saanut toteutettua naapurisolmujen läpikäyntijärjestyksen muutosta [lisäys: tehty seuraavalla viikolla] enkä myöskään etäisyysarvion parantamista toisen heuristiikan avulla, koska yritykseni jostain syystä vain hidastivat ohjelmaa. Ohjelma on kuitenkin jonkin verran nopeutunut alkuviikosta muiden pienten muutosten myötä.
 
 4 tuntia.
 
